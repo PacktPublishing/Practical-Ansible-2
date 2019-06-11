@@ -1,0 +1,12 @@
+[frontends-na-zone]
+frontend1-na.danieloh.com ansible_ssh_host=192.168.5.25 ansible_ssh_user=test
+frontend2-na.danieloh.com ansible_ssh_host=192.168.5.26 ansible_ssh_user=test2
+[frontends-emea-zone]
+frontend1-emea.danieloh.com ansible_ssh_host=192.168.99.100 ansible_ssh_user=prachi
+frontend2-emea.danieloh.com ansible_ssh_host=172.28.128.3 ansible_ssh_user=test2
+[appservers-na-zone]
+appserver1-na.danieloh.com ansible_ssh_host=192.168.5.25 ansible_ssh_user=test
+appserver2-na.danieloh.com ansible_ssh_host=192.168.5.26 ansible_ssh_user=test2
+[appservers-emea-zone]
+appserver1-emea.danieloh.com ansible_ssh_host=192.168.99.100 ansible_ssh_user=prachi
+appserver2-emea.danieloh.com ansible_ssh_host=172.28.128.3 ansible_ssh_user=test2

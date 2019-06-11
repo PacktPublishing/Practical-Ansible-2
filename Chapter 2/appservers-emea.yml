@@ -1,0 +1,7 @@
+---
+- hosts: appservers-emea-zone
+  remote_user: danieloh
+  tasks:
+    - name: simple connection test
+      ping:
+      remote_user: danieloh
