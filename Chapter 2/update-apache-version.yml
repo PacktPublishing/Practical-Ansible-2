@@ -1,9 +1,13 @@
 ---
 - hosts: all
   become: yes
-  become_method: sudo
+
   tasks:
-  - name: ensure apache is at the latest version
-    apt: name=apache2 state=latest
-  - name: ensure apache is running
-    service: name=apache2 state=started enabled=yes
+  - name: Update the latest of an Apache Web Server
+    yum: pkg=httpd state=latest
+    notify:
+      - Restart an Apache Web Server
+  handlers:
+  - name: Restart an Apache Web Server
+    service: name=httpd state=restarted
+
