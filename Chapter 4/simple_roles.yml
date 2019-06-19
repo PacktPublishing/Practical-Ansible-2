@@ -1,0 +1,7 @@
+---
+- name: Playbook using roles
+  hosts: frontends
+  remote_user: root
+
+  roles:
+  - common

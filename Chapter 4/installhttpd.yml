@@ -1,0 +1,22 @@
+---
+- hosts: frontends
+  vars:
+    http_port: 8090
+  remote_user: danieloh
+
+  tasks:
+  - name: install apache httpd server on CentOS 7
+    yum:
+      name: httpd
+      state: latest
+  - name: update configuration via jinja template
+    template:
+      src: /srv/httpd.j2
+      dest: /etc/httpd.conf
+    notify:
+    - restart apache
+  handlers:
+  - name: restart apache web server
+    service:
+      name: httpd
+      state: restarted

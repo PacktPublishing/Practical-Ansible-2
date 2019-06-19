@@ -1,0 +1,8 @@
+---
+- hosts: all
+
+  tasks:
+  - name: run a simple task locally
+    file:
+      name: /tmp/test.txt
+      state: touch

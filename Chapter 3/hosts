@@ -1,0 +1,20 @@
+[frontends]
+frt01.prod.com https_port=8443
+frt02.prod.com http_proxy=proxy.prod.com
+
+[frontends:vars]
+ntp_server=ntp.frt.prod.com
+proxy=proxy.frt.prod.com
+
+[apps]
+app01.prod.com
+app02.prod.com
+
+[webapp:children]
+frontends
+apps
+
+[webapp:vars]
+proxy_server=proxy.webapp.prod.com
+health_check_retry=3
+health_check_interal=60

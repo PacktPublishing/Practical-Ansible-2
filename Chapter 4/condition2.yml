@@ -1,0 +1,7 @@
+---
+- hosts: frontends
+  
+  tasks:
+  - name: "shut down Fedora 27"
+    command: /sbin/shutdown -t now
+    when: (ansible_facts['distribution'] == "Fedora" and ansible_facts['distribution_major_version'] == "27")

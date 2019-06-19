@@ -1,0 +1,9 @@
+---
+- hosts: frontends
+  vars:
+    filecontents: "{{ lookup('myplugin', 'test.txt')
+}}"
+
+  tasks:
+  - debug:
+      msg: the contents of this file are {{ filecontents }}!! {{ lookup('pipe') }}

@@ -1,0 +1,12 @@
+---
+- hosts: frontends
+  remote_user: danieloh
+
+  tasks:
+  - name: simple connection test
+    ping:
+    remote_user: danieloh
+
+  - name: run a simple command
+    shell: /bin/ls -al
+    ignore_errors: True

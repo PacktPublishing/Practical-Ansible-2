@@ -1,0 +1,11 @@
+---
+- hosts: appservers
+  name: rolling updates task
+  serial: 2
+  gather_facts: False
+
+  tasks:
+  - name: task one
+    command: date
+  - name: task two
+    command: date

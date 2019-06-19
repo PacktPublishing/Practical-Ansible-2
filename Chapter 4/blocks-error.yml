@@ -1,0 +1,21 @@
+---
+- hosts: frontends
+  tasks:
+    - name: block to handle errors
+      block:
+        - debug:
+            msg: 'Normally executing....'
+        - name: Make an error forcefully
+          command: /bin/whatever
+        - debug:
+            msg: 'Never print this message if the above command is failed!!!!'
+      rescue:
+        - debug:
+            msg: 'Catching the error'
+        - name: Make an error once again during the rescue
+          command: /bin/whatever
+        - debug:
+            msg: 'Neither print this message if the above command is failed!!!!'
+      always:
+        - debug:
+            msg: "Some commands in this part will be ALWAYS executed!!!!"

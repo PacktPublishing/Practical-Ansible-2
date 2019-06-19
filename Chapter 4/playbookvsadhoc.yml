@@ -1,0 +1,16 @@
+---
+- hosts: frontends
+  remote_user: doh
+
+  handlers:
+  - name: restart apache web server
+    service:
+      name: httpd
+      state: restarted
+    listen: "restart all services"
+
+  tasks:
+  - name: restart all services
+    debug:
+      msg: "Restarting"
+    notify: "restart all services"

@@ -1,0 +1,29 @@
+---
+- hosts: frontends
+  remote_user: root
+
+  tasks:
+  - name: Install an Apache Httpd server
+    yum:
+      name: httpd
+      state: latest
+  - name: Start the Apache Httpd server
+    service:
+      name: httpd
+      state: started
+
+- hosts: dbservers
+  remote_user: root
+
+  tasks:
+  - name: Install PostgreSql server
+    yum:
+      name: postgresql-server
+      state: latest
+  - name: Initialize the database
+    shell: postgresql-setup initdb
+    ignore_errors: true
+  - name: Start the PostgreSql server
+    service:
+      name: postgresql
+      state: started

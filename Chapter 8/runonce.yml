@@ -1,0 +1,9 @@
+---
+- hosts: appservers
+
+  tasks:
+  - name: upgrade web servers
+    command: /usr/bin/webserver_upgrade.sh
+    delegate_to: app01.prod.com
+    run_once: true
+

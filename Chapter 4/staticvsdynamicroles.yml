@@ -1,0 +1,8 @@
+---
+- hosts: frontends
+
+  tasks:
+  - import_role:
+      name: common
+  - include_role:
+      name: approle

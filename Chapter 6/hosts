@@ -1,0 +1,5 @@
+[frontends]
+frt01.prod.com
+
+[appservers]
+app01.prod.com

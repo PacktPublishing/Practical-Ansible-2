@@ -1,0 +1,5 @@
+---
+- hosts: frontends
+  tasks:
+  - debug:
+      msg: "{{lookup('pipe', '/usr/bin/whoami')}}"

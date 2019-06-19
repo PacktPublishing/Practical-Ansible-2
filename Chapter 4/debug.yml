@@ -1,0 +1,10 @@
+---
+- hosts: frontends
+  strategy: debug
+  debugger: on_failed
+  gather_facts: no
+  vars:
+    name: daniel
+  tasks:
+  - name: make an error with refering incorrect variable
+    ping: data={{ mobile }}

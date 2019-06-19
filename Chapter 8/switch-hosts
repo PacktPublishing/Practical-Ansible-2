@@ -1,0 +1,6 @@
+[switches]
+eos.myswitch.com
+ios.myswitch.com
+
+[switches:vars]
+ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q bastion-server"'

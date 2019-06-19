@@ -1,0 +1,9 @@
+---
+- hosts: frontends
+  remote_user: danieloh
+
+  tasks:
+  - name: a long-running task
+    command: /bin/sh /tmp/mybatch.sh
+    async: 30
+    poll: 3

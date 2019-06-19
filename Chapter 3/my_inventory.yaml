@@ -1,0 +1,13 @@
+---
+ungrouped:
+  hosts:
+    target.remote.com:
+      ansible_host: target.remote.com
+      ansible_port: 3333
+    target.cloud.com:
+      ansible_host: target.cloud.com
+      ansible_port: 3333
+      ansible_user: danieloh
+    target.internal.com:
+      ansible_host: target.internal.com
+      ansible_port: 4444

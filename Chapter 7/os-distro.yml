@@ -1,0 +1,18 @@
+---
+- name: run common tasks for all hosts
+  hosts: all
+
+  tasks:
+  - name: grouping hosts along with OS distro
+    group_by:
+      key: os_{{ ansible_facts['distribution'] }}
+
+- hosts: os_Fedora
+  gather_facts: False
+  tasks:
+  - # run specific tasks on Fedora
+
+- hosts: os_Ubuntu
+  gather_facts: False
+  tasks:
+  - # run specific tasks on Ubuntu

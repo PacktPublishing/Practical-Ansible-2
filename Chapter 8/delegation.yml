@@ -1,0 +1,7 @@
+---
+- hosts: frontends
+  serial: 3
+
+  tasks:
+  - name: run a command on localhost
+    local_action: command /bin/echo {{ inventory_hostname }}

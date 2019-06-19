@@ -1,0 +1,12 @@
+all:
+  hosts:
+    interface.prod.com:
+  children:
+    integrations:
+      hosts:
+        int01.prod.com:
+        int02.prod.com:
+    caches:
+      hosts:
+        cache01.prod.com:
+        cache02.prod.com:

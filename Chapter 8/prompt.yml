@@ -1,0 +1,13 @@
+---
+- hosts: all
+  vars_prompt:
+    - name: loginid
+      prompt: "Input a username to login?"
+      private: no
+
+    - name: password
+      prompt: "Input a password for the above username?"
+
+  tasks:
+  - debug:
+      msg: 'Logging in as {{ loginid }}'

@@ -1,0 +1,13 @@
+threetier.prod.com
+
+[frontends]
+frt01.prod.com
+frt02.prod.com
+
+[apps]
+app01.prod.com
+app02.prod.com
+
+[databases]
+dbms01.prod.com
+dbms02.prod.com

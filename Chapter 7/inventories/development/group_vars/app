@@ -1,0 +1,2 @@
+maxClients: 10
+maxDBConnection: 5

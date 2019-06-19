@@ -1,0 +1,5 @@
+[appservers]
+app01.dev.com
+app02.dev.com
+app01.prod.com
+app02.prod.com

@@ -1,0 +1,23 @@
+---
+- hosts: frontends
+
+  tasks:
+  - name: Install Httpd web server and configure some stuff
+    block:
+      - dnf:
+          name: "{{ item }}"
+          state: installed
+        with_items:
+          - httpd
+      - template:
+          src: templates/src.j2
+          dest: /tmp/my.conf
+      - service:
+          name: httpd
+          state: started
+          enabled: True
+        when: ansible_facts['distribution'] == 'Fedora'
+        become: true
+        become_user: root
+
+
