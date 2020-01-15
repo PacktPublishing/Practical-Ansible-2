@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+    - name: Touch a file
+      file:
+        path: /tmp/myfile
+        state: touch
+

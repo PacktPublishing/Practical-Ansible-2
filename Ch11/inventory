@@ -1,0 +1,4 @@
+[hosts]
+host1.ansible2cookbook.com
+host2.ansible2cookbook.com
+host3.ansible2cookbook.com

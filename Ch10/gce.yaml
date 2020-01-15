@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  tasks:
+    - name: create a instance
+      gcp_compute_instance:
+        name: TestMachine
+        machine_type: n1-standard-1
+        disks:
+        - auto_delete: 'true'
+          boot: 'true'
+          initialize_params:
+            source_image: family/centos-7
+            disk_size_gb: 10
+        zone: eu-west1-c
+        auth_kind: serviceaccount
+        service_account_file: "~/.config/gcloud/legacy_credentials/f.locati@opengate.biz/singlestore_bq.json"
+        state: present

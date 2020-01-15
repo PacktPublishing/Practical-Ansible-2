@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Start a container with a command
+      docker_container:
+        name: test-container
+        image: alpine
+        command:
+          - echo
+          - "Hello, World!"
