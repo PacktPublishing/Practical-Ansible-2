@@ -1,0 +1,4 @@
+[webservers]
+
+[centos:children]
+webservers

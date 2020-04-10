@@ -1,0 +1,25 @@
+---
+- name: Install Apache
+  hosts: frt01.example.com
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Install Apache package
+      yum:
+        name: httpd
+        state: latest
+    - name: Open firewall for Apache
+      firewalld:
+        service: "{{ item }}"
+        permanent: yes
+        state: enabled
+        immediate: yes
+      loop:
+        - "http"
+        - "https"
+    - name: Restart and enable the service
+      service:
+        name: httpd
+        state: restarted
+        enabled: yes

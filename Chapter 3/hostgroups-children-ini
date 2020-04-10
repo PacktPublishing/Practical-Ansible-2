@@ -11,3 +11,10 @@ app02.example.com
 [databases]
 dbms01.example.com
 dbms02.example.com
+
+[centos:children]
+apps
+databases
+
+[ubuntu:children]
+frontends

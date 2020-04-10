@@ -1,13 +1,19 @@
 ---
-- hosts: all
+- name: My first Ansible playbook
+  hosts: all
   become: yes
 
   tasks:
   - name: Update the latest of an Apache Web Server
-    yum: pkg=httpd state=latest
+    yum: 
+      name: httpd
+      state: latest
     notify:
       - Restart an Apache Web Server
+
   handlers:
   - name: Restart an Apache Web Server
-    service: name=httpd state=restarted
+    service: 
+      name: httpd
+      state: restarted
 

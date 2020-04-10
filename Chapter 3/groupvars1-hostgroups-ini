@@ -4,6 +4,10 @@ loadbalancer.example.com
 frt01.example.com
 frt02.example.com
 
+[frontends:vars]
+https_port=8443
+lb_vip=lb.example.com
+
 [apps]
 app01.example.com
 app02.example.com

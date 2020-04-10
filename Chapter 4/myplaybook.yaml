@@ -8,5 +8,5 @@
     remote_user: danieloh
 
   - name: run a simple command
-    shell: /bin/ls -al
+    shell: /bin/ls -al /nonexistent
     ignore_errors: True

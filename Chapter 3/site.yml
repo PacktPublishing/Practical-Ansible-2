@@ -1,0 +1,7 @@
+---
+- name: A simple playbook for demonstrating inventory patterns
+  hosts: all
+
+  tasks:
+    - name: Ping each host
+      ping:

@@ -1,0 +1,29 @@
+---
+servers:
+  - frontend
+  - backend
+  - database
+  - cache
+employees:
+  - name: daniel
+    fullname: Daniel Oh
+    role: DevOps Evangelist
+    level: Expert
+    skills:
+      - Kubernetes
+      - Microservices
+      - Ansible
+      - Linux Container
+  - name: michael
+    fullname: Michael Smiths
+    role: Enterprise Architect
+    level: Advanced
+    skills:
+      - Cloud
+      - Middleware
+      - Windows
+      - Storage
+    Speciality: |
+      Agile methodology
+      Cloud-native app development practices
+      Advanced enterprise DevOps practices

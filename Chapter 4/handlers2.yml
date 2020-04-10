@@ -1,0 +1,22 @@
+---
+- name: Handler demo 1
+  hosts: frt01.example.com
+  gather_facts: no
+  become: yes
+
+  handlers:
+    - name: restart chronyd
+      service:
+        name: chronyd
+        state: restarted
+      listen: "restart all services"
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
+      listen: "restart all services"
+
+  tasks:
+    - name: restart all services
+      command: echo "this task will restart all services"
+      notify: "restart all services"

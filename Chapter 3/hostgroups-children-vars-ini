@@ -4,6 +4,9 @@ loadbalancer.example.com
 frt01.example.com
 frt02.example.com
 
+[frontends:vars]
+testvar=childgroup
+
 [apps]
 app01.example.com
 app02.example.com
@@ -11,3 +14,13 @@ app02.example.com
 [databases]
 dbms01.example.com
 dbms02.example.com
+
+[centos:children]
+apps
+databases
+
+[ubuntu:children]
+frontends
+
+[ubuntu:vars]
+testvar=group

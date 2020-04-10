@@ -1,29 +1,28 @@
 ---
-- hosts: frontends
-  remote_user: root
+- name: Play 1 - configure the frontend servers
+  hosts: frontends
+  become: yes
 
   tasks:
-  - name: Install an Apache Httpd server
+  - name: Install  the Apache package
     yum:
       name: httpd
       state: latest
-  - name: Start the Apache Httpd server
+  - name: Start the Apache server
     service:
       name: httpd
       state: started
 
-- hosts: dbservers
-  remote_user: root
+- name: Play 2 - configure the appliation servers
+  hosts: apps
+  become: true 
 
   tasks:
-  - name: Install PostgreSql server
+  - name: Install Tomcat
     yum:
-      name: postgresql-server
+      name: tomcat
       state: latest
-  - name: Initialize the database
-    shell: postgresql-setup initdb
-    ignore_errors: true
-  - name: Start the PostgreSql server
+  - name: Start the Tomcat server
     service:
-      name: postgresql
+      name: tomcat
       state: started

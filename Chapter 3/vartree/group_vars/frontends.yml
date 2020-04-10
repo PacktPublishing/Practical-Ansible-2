@@ -1,0 +1,3 @@
+---
+https_port: 8443
+lb_vip: lb.example.com

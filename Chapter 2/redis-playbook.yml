@@ -1,0 +1,15 @@
+---
+- name: Display redis variables
+  hosts: all
+
+  vars:
+    redis:
+      server: cacheserver01.example.com
+      port: 6379
+      slaveof: cacheserver02.example.com
+ 
+  tasks:
+    - name: Display the redis port
+      debug:
+        #var: redis
+        msg: "The redis port for {{ redis.server }} is {{ redis.port }}" 

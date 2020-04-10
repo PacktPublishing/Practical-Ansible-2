@@ -1,0 +1,11 @@
+---
+- name: Parse the employees playbook
+  hosts: localhost
+  vars_files:
+    - employees-flow.yml
+
+  tasks:
+    - name: Print the variables
+      debug:
+        var: employees
+
