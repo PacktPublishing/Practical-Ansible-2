@@ -1,0 +1,12 @@
+---
+- name: Simple play to demonstrate a return value
+  hosts: localhost
+
+  tasks:
+    - name: Perform a simple module based task
+      ping:
+      register: pingresult
+
+    - name: Display the result
+      debug:
+        var: pingresult

@@ -1,0 +1,6 @@
+{
+    "ANSIBLE_MODULE_ARGS": {
+        "source": "/tmp/foo",
+        "dest": "/tmp/bar"
+    }
+}

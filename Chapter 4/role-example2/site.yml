@@ -1,0 +1,6 @@
+---
+- name: Role variables and meta playbook
+  hosts: frt01.example.com
+
+  roles:
+    - platform

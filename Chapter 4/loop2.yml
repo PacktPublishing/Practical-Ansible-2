@@ -1,0 +1,16 @@
+---
+- name: Simple loop demo play
+  hosts: frt01.example.com
+
+  tasks:
+    - name: Echo a value from the loop
+      command: echo "{{ item }}"
+      loop:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+      when: item|int > 3
+

@@ -1,10 +1,12 @@
 ---
-- hosts: frontends
+- name: Play to demonstrate the debug strategy
+  hosts: frt01.example.com
   strategy: debug
   debugger: on_failed
   gather_facts: no
   vars:
     name: daniel
+
   tasks:
-  - name: make an error with refering incorrect variable
-    ping: data={{ mobile }}
+    - name: Generate an error by referencing an undefined variable
+      ping: data={{ mobile }}

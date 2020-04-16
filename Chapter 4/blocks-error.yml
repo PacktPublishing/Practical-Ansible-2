@@ -1,21 +1,28 @@
 ---
-- hosts: frontends
+- name: Play to demonstrate block error handling
+  hosts: frontends
+
   tasks:
     - name: block to handle errors
       block:
-        - debug:
+        - name: Perform a successful task
+          debug:
             msg: 'Normally executing....'
-        - name: Make an error forcefully
+        - name: Deliberately create an error
           command: /bin/whatever
-        - debug:
-            msg: 'Never print this message if the above command is failed!!!!'
+        - name: This task should not run if the previous one results in an error
+          debug:
+            msg: 'Never print this message if the above command fails!!!!'
       rescue:
-        - debug:
-            msg: 'Catching the error'
-        - name: Make an error once again during the rescue
+        - name: Catch the error (and perform recovery actions)
+          debug:
+            msg: 'Caught the error'
+        - name: Deliberately create another error
           command: /bin/whatever
-        - debug:
-            msg: 'Neither print this message if the above command is failed!!!!'
+        - name: This task should not run if the previous one results in an error
+          debug:
+            msg: 'Do not print this message if the above command fails!!!!'
       always:
-        - debug:
-            msg: "Some commands in this part will be ALWAYS executed!!!!"
+        - name: This task always runs!
+          debug:
+            msg: "Tasks in this part of the play will be ALWAYS executed!!!!"

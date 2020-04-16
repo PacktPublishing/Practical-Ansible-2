@@ -1,4 +1,0 @@
----
-- hosts: frontends
-  roles:
-  - platform

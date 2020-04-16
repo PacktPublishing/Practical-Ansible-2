@@ -1,0 +1,13 @@
+---
+- name: Play to demonstrate nested loops
+  hosts: localhost
+
+  tasks:
+    - name: Outer loop
+      include_tasks: loopsubtask.yml
+      loop:
+        - a
+        - b
+        - c
+      loop_control:
+        loop_var: second_item

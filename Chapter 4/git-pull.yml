@@ -1,9 +1,0 @@
----
-- hosts: frontends
-  
-  tasks:
-  - name: git pull sample
-    git:
-      repo: https://github.com/ansible/ansible-examples.git
-      dest: /tmp/ansible-examples
-      refspec: '+refs/pull/*:refs/heads/*'

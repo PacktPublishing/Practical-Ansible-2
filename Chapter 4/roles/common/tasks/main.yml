@@ -1,5 +1,0 @@
-- name: import a specific task based on OS platform
-  import_tasks: centos.yml
-  when: ansible_distribution == 'CentOS'
-- import_tasks: ubuntu.yml
-  when: ansible_distribution == 'Ubuntu'

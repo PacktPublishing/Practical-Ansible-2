@@ -1,0 +1,8 @@
+---
+- name: Inner loop
+  debug:
+    msg: "second item={{ second_item }} first item={{ item }}"
+  loop:
+    - 100
+    - 200
+    - 300

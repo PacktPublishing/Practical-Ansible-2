@@ -1,23 +1,24 @@
 ---
-- hosts: frontends
+- name: Conditional block play
+  hosts: all
+  become: true
 
   tasks:
-  - name: Install Httpd web server and configure some stuff
+  - name: Install and configure Apache
     block:
-      - dnf:
-          name: "{{ item }}"
+      - name: Install the Apache package
+        dnf:
+          name: httpd
           state: installed
-        with_items:
-          - httpd
-      - template:
+      - name: Install the templated configuration to a dummy location
+        template:
           src: templates/src.j2
           dest: /tmp/my.conf
-      - service:
+      - name: Start the httpd service
+        service:
           name: httpd
           state: started
           enabled: True
-        when: ansible_facts['distribution'] == 'Fedora'
-        become: true
-        become_user: root
+    when: ansible_facts['distribution'] == 'Fedora'
 
 
