@@ -1,0 +1,14 @@
+---
+- name: Playbook to test custom module
+  hosts: all
+
+  tasks:
+    - name: Test the custom module
+      remote_filecopy:
+        source: /tmp/foo
+        dest: /tmp/bar
+      register: testresult
+
+    - name: Print the test result data
+      debug:
+        var: testresult  
