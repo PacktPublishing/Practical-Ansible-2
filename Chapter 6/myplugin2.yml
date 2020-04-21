@@ -1,0 +1,9 @@
+---
+- name: Play to demonstrate our custom lookup plugin
+  hosts: frontends
+  gather_facts: false
+ 
+  tasks:
+    - name: make a statement
+      debug:
+        msg: "{{ lookup('firstchar', 'testdoc.txt')}}"

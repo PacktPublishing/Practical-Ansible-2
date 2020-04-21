@@ -1,9 +1,11 @@
 ---
-- hosts: frontends
+- name: Play to demonstrate our custom filter
+  hosts: frontends
+  gather_facts: false
   vars:
-    filecontents: "{{ lookup('myplugin', 'test.txt')
-}}"
-
+    statement: "Puppet is an excellent automation tool!"
+ 
   tasks:
-  - debug:
-      msg: the contents of this file are {{ filecontents }}!! {{ lookup('pipe') }}
+    - name: make a statement
+      debug:
+        msg: "{{ statement | improve_automation }}"
