@@ -1,5 +1,0 @@
----
-- hosts: backends
-  tasks:
-  - name: backends connection test
-    ping:

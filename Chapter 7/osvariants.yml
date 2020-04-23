@@ -1,0 +1,28 @@
+---
+- name: Play to demonstrate group_by module
+  hosts: all
+
+  tasks:
+    - name: Create inventory groups based on host facts
+      group_by:
+        key: os_{{ ansible_facts['distribution'] }}
+
+- name: Play to install Apache on CentOS
+  hosts: os_CentOS
+  become: true
+
+  tasks:
+    - name: Install Apache on CentOS
+      yum:
+        name: httpd
+        state: present
+
+- name: Play to install Apache on Ubuntu
+  hosts: os_Ubuntu
+  become: true
+
+  tasks:
+    - name: Install Apache on Ubuntu
+      apt:
+        name: apache2
+        state: present

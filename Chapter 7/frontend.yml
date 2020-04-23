@@ -1,5 +1,0 @@
----
-- hosts: frontends
-  tasks:
-  - name: frontends test
-    shell: echo 'frontends test'

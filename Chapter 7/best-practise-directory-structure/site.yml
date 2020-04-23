@@ -1,0 +1,6 @@
+---
+- name: Play using best practise directory structure
+  hosts: all
+
+  roles:
+    - installapp

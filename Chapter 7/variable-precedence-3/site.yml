@@ -1,0 +1,9 @@
+---
+- name: Play using best practise directory structure
+  hosts: all
+
+  tasks:
+    - name: Display the value of our inventory variable
+      debug:
+        var: http_port
+
