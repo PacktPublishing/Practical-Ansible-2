@@ -1,0 +1,6 @@
+[switches]
+cmls01.example.com
+cmls02.example.com
+
+[switches:vars]
+ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q bastion.example.com"'

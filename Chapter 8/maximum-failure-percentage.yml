@@ -1,3 +1,0 @@
-- hosts: frontends
-  max_fail_percentage: 40
-  serial: 10

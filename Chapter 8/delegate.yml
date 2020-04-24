@@ -1,0 +1,20 @@
+---
+- name: Play to demonstrate task delegation
+  hosts: frontends
+  
+  tasks:
+    - name: Remove host from the load balancer
+      command: ./remove_from_loadbalancer.sh {{ inventory_hostname }}
+      args:
+        chdir: "{{ playbook_dir }}"
+      delegate_to: localhost
+
+    - name: Deploy code to host
+      debug:
+        msg: Deployment code would go here....
+
+    - name: Add host back to the load balancer
+      command: ./add_to_loadbalancer.sh {{ inventory_hostname }}
+      args:
+        chdir: "{{ playbook_dir }}"
+      delegate_to: localhost

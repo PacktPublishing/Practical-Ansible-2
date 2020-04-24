@@ -1,9 +1,10 @@
 ---
-- hosts: appservers
+- name: Play to demonstrate the run_once directive
+  hosts: frontends
+  serial: 5
 
   tasks:
-  - name: upgrade web servers
-    command: /usr/bin/webserver_upgrade.sh
-    delegate_to: app01.prod.com
-    run_once: true
-
+    - name: Upgrade database schema
+      debug:
+        msg: Upgrading database schema...
+      run_once: true

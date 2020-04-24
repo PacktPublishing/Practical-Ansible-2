@@ -1,0 +1,11 @@
+---
+- name: Simple serial demonstration play
+  hosts: frontends
+  serial: 1
+  gather_facts: false
+
+  tasks:
+    - name: First task
+      command: date
+    - name: Second task
+      command: date

@@ -1,0 +1,15 @@
+---
+- name: A simple play to demonstrate use of max_fail_percentage
+  hosts: frontends
+  gather_facts: no
+  serial: 5
+  max_fail_percentage: 50
+
+  tasks:
+    - name: A task that will sometimes fail
+      debug:
+        msg: This might fail
+      failed_when: inventory_hostname in ansible_play_batch[0:3]
+    - name: A task that will succeed
+      debug:
+        msg: Success!

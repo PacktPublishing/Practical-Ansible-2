@@ -1,0 +1,19 @@
+---
+- name: Play to demonstrate asynchronous tasks
+  hosts: frontends
+  become: true
+
+  tasks:
+    - name: A simulated long running task
+      shell: "sleep 20"
+      async: 30
+      poll: 0
+      register: long_task
+
+    - name: Check on the asynchronous task
+      async_status:
+        jid: "{{ long_task.ansible_job_id }}"
+      register: async_result
+      until: async_result.finished
+      retries: 30
+

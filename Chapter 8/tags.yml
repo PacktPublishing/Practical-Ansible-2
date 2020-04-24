@@ -1,0 +1,18 @@
+---
+- name: Simple play to demonstrate use of tags
+  hosts: frontends
+
+  tasks:
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+      tags:
+        - install
+
+    - name: Install nginx configuration from template
+      template:
+        src: templates/nginx.conf.j2
+        dest: /etc/nginx.conf
+      tags:
+        - customize

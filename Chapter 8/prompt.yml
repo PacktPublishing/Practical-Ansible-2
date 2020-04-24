@@ -1,13 +1,16 @@
 ---
-- hosts: all
+- name: A simple play to demonstrate prompting in a playbook
+  hosts: frontends
+
   vars_prompt:
     - name: loginid
-      prompt: "Input a username to login?"
+      prompt: "Enter your username"
       private: no
-
     - name: password
-      prompt: "Input a password for the above username?"
+      prompt: "Enter your password"
+      private: yes
 
   tasks:
-  - debug:
-      msg: 'Logging in as {{ loginid }}'
+    - name: Proceed with login
+      debug:
+        msg: "Logging in as {{ loginid }}..."

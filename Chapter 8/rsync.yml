@@ -1,6 +1,0 @@
----
-- hosts: frontends
-
-  tasks:
-  - name: copy files recursively from management server to target hosts
-    local_action: command rsync -a /tmp/my.conf {{ inventory_hostname }}:/tmp/test

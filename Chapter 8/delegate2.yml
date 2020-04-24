@@ -1,0 +1,7 @@
+---
+- name: Second task delegation example
+  hosts: frontends
+
+  tasks:
+  - name: Perform an rsync from localhost to inventory hosts
+    local_action: command rsync -a /tmp/ {{ inventory_hostname }}:/tmp/target/

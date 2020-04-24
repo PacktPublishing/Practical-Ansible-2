@@ -1,9 +1,11 @@
 ---
-- hosts: frontends
-  remote_user: danieloh
+- name: Play to demonstrate asynchronous tasks
+  hosts: frontends
+  become: true
 
   tasks:
-  - name: a long-running task
-    command: /bin/sh /tmp/mybatch.sh
-    async: 30
-    poll: 3
+    - name: A simulated long running task
+      shell: "sleep 20"
+      async: 30
+      poll: 5
+
