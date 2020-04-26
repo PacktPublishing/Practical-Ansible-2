@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Ensure the my_machine exists
+      rax:
+        name: my_machine
+        flavor: 4
+        image: centos-8
+        count: 1
+        group: my_group
+        wait: True

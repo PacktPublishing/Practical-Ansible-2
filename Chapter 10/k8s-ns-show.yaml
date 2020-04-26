@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Get information from K8s
+      k8s_info:
+        api_version: v1
+        kind: Namespace
+      register: ns
+    - name: Print info
+      debug:
+        var: ns

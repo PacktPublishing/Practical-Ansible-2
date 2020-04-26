@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Ensure the Service mysvc is present
+      k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: mysvc
+            namespace: myns
+          spec:
+            selector:
+              app: myapp
+              service: mysvc
+            ports:
+              - protocol: TCP
+                targetPort: 800
+                name: port-80-tcp
+                port: 80

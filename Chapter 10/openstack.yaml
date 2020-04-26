@@ -1,0 +1,72 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Ensure the SSH key is present on OpenStack
+      os_keypair:
+        state: present
+        name: ansible_key
+        public_key_file: "{{ '~' | expanduser }}/.ssh/id_rsa.pub"
+    - name: Ensure we have a CentOS image
+      get_url:
+        url: http://cloud.centos.org/centos/8/x86_64/images/CentOS-8-GenericCloud-8.1.1911-20200113.3.x86_64.qcow2
+        dest: /tmp/CentOS-8-GenericCloud-8.1.1911-20200113.3.x86_64.qcow2
+    - name: Ensure the CentOS image is in OpenStack
+      os_image:
+        name: centos
+        container_format: bare
+        disk_format: qcow2
+        state: present
+        filename: /tmp/CentOS-8-GenericCloud-8.1.1911-20200113.3.x86_64.qcow2
+    - name: Ensure the Network is present
+      os_network:
+        state: present
+        name: mynet
+        external: False
+        shared: False
+      register: net_out
+    - name: Ensure the Subnetwork is present
+      os_subnet:
+        state: present
+        network_name: "{{ net_out.id }}"
+        name: mysubnet
+        ip_version: 4
+        cidr: 192.168.0.0/24
+        gateway_ip: 192.168.0.1
+        enable_dhcp: yes
+        dns_nameservers:
+          - 8.8.8.8
+    - name: Ensure the Router is present
+      os_router:
+        state: present
+        name: myrouter
+        network: nova
+        external_fixed_ips:
+          - subnet: nova
+        interfaces:
+          - mysubnet
+    - name: Ensure the Security Group is present
+      os_security_group:
+        state: present
+        name: mysg
+    - name: Ensure the Security Group allows ICMP traffic
+      os_security_group_rule:
+        security_group: mysg
+        protocol: icmp
+        remote_ip_prefix: 0.0.0.0/0
+    - name: Ensure the Security Group allows SSH traffic
+      os_security_group_rule:
+        security_group: mysg
+        protocol: tcp
+        port_range_min: 22
+        port_range_max: 22
+        remote_ip_prefix: 0.0.0.0/0
+    - name: Ensure the Instance exists
+      os_server:
+        state: present
+        name: myInstance
+        image: centos
+        flavor: m1.small
+        security_groups: mysg
+        key_name: ansible_key
+        nics:
+          - net-id: "{{ net_out.id }}"

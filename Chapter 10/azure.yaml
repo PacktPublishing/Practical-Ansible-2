@@ -1,0 +1,59 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Ensure the Storage Account is present
+      azure_rm_storageaccount:
+        resource_group: Testing
+        name: mysa
+        account_type: Standard_LRS
+    - name: Ensure the Virtual Network is present
+      azure_rm_virtualnetwork:
+        resource_group: Testing
+        name: myvn
+        address_prefixes: "10.10.0.0/16"
+    - name: Ensure the Subnet is present
+      azure_rm_subnet:
+        resource_group: Testing
+        name: mysn
+        address_prefix: "10.10.0.0/24"
+        virtual_network: myvn
+    - name: Ensure that the Public IP is set
+      azure_rm_publicipaddress:
+        resource_group: Testing
+        allocation_method: Static
+        name: myip
+    - name: Ensure a Security Group allowing SSH is present
+      azure_rm_securitygroup:
+        resource_group: Testing
+        name: mysg
+        rules:
+          - name: SSH
+            protocol: Tcp
+            destination_port_range: 22
+            access: Allow
+            priority: 101
+            direction: Inbound
+    - name: Ensure the NIC is present
+      azure_rm_networkinterface:
+        resource_group: Testing
+        name: testnic001
+        virtual_network: myvn
+        subnet: mysn
+        public_ip_name: myip
+        security_group: mysg
+    - name: Ensure the Virtual Machine is present
+      azure_rm_virtualmachine:
+        resource_group: Testing
+        name: myvm01
+        vm_size: Standard_D1
+        storage_account: mysa
+        storage_container: myvm01
+        storage_blob: myvm01.vhd
+        admin_username: admin
+        admin_password: Password!
+        network_interfaces: testnic001
+        image:
+          offer: CentOS
+          publisher: OpenLogic
+          sku: '8.0'
+          version: latest
