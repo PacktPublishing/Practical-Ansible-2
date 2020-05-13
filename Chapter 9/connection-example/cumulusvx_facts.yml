@@ -1,0 +1,9 @@
+---
+- name: Simply play to gather Cumulus VX switch facts
+  hosts: cumulusvx
+  gather_facts: no
+
+  tasks:
+    - name: Gather facts
+      setup:
+        gather_subset: all

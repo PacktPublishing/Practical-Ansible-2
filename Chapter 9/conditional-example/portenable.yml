@@ -1,0 +1,11 @@
+---
+- name: Simple play to demonstrate conditional on Cumulus Linux
+  hosts: cumulusvx
+
+  tasks:
+    - name: Enable swp2 if it is disabled
+      nclu:
+        commands:
+          - add int swp2
+        commit: yes
+      when: ansible_swp2.active == false

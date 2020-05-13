@@ -1,0 +1,6 @@
+---
+ansible_user: cumulus
+ansible_become: false
+ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -q bastion.example.com"'
+proxy_env:
+    http_proxy: http://proxy.example.com:8080

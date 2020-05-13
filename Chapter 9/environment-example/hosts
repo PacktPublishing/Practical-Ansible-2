@@ -1,0 +1,6 @@
+[bastion_routers]
+n1.example.com
+n2.example.com
+
+[bastion_cumulusvx]
+vx01.example.com

@@ -1,0 +1,6 @@
+[routers]
+n1.example.com
+n2.example.com
+
+[cumulusvx]
+vx01.example.com
