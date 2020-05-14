@@ -2,4 +2,4 @@
 - hosts: localhost
   tasks:
     - debug:
-       var: variable
+        var: variable
