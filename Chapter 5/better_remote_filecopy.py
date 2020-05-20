@@ -1,6 +1,5 @@
 #!/usr/bin/python 
 # 
-import shutil 
 
 # Copyright: (c) 2018, Jesse Keating <jesse.keating@example.org>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
@@ -26,7 +25,7 @@ options:
       - Path to the destination on the remote host for the copy
     required: True
 author:
-  - Jesse Keating
+- Jesse Keating (@omgjlk)
 ''' 
 EXAMPLES = '''
    # Example from Ansible Playbooks
@@ -39,12 +38,12 @@ RETURN = '''
 source:
   description: source file used for the copy
   returned: success
-  type: string
+  type: str
   sample: "/path/to/file.name"
 dest:
   description: destination of the copy
   returned: success
-  type: string
+  type: str
   sample: "/path/to/destination.file"
 gid:
   description: group ID of destination target
@@ -54,7 +53,7 @@ gid:
 group:
   description: group name of destination target
   returned: success
-  type: string
+  type: str
   sample: "users"
 uid:
   description: owner ID of destination target
@@ -64,7 +63,7 @@ uid:
 owner:
   description: owner name of destination target
   returned: success
-  type: string
+  type: str
   sample: "fred"
 mode:
   description: permissions of the destination target
@@ -79,9 +78,10 @@ size:
 state:
   description: state of destination target
   returned: success
-  type: string
+  type: str
   sample: "file"
 '''
+import shutil 
 
 def main(): 
     module = AnsibleModule( 
@@ -100,4 +100,3 @@ def main():
 from ansible.module_utils.basic import * 
 if __name__ == '__main__': 
     main() 
-
