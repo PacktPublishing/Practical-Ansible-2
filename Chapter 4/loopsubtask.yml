@@ -6,3 +6,5 @@
     - 100
     - 200
     - 300
+  loop_control:
+    loop_var: first_item
